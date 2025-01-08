@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>アクセシビリティ対応UI サンプル</title>
+    <link rel="stylesheet" href="./style/base.css" />
+    <link rel="stylesheet" href="./style/tab/index.css" />
+    <link rel="stylesheet" href="./style/modal/index.css" />
+    <link rel="stylesheet" href="./style/collapse/index.css" />
+    <link rel="stylesheet" href="./style/carousel/index.css" />
+    <script src="./script/main.js" type="module" defer></script>
+    <script src="./script/dialog.js" type="module" defer></script>
+    <script src="./script/details-accordion.js" type="module" defer></script>
+    <script src="./script/carousel.js" type="module" defer></script>
+  </head>
+  <body>
+    <main class="js-modal-background">
+      <h1>アクセシビリティ対応UI サンプル</h1>
+
+      <h2 id="tablist-1">タブ</h2>
+      <div aria-labelledby="tablist-1" class="tab">
+        <div role="tablist">
+          <button
+            id="tab-1"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="tabpanel-1"
+            class="tab__switcher"
+          >
+            <span class="tab__focus">Tab1</span>
+          </button>
+          <button
+            id="tab-2"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tabpanel-2"
+            tabindex="-1"
+            class="tab__switcher"
+          >
+            <span class="tab__focus">Tab2</span>
+          </button>
+          <button
+            id="tab-3"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tabpanel-3"
+            tabindex="-1"
+            class="tab__switcher"
+          >
+            <span class="tab__focus">Tab3</span>
+          </button>
+        </div>
+        <div id="tabpanel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1" class="tab__content">
+          <p>Content1</p>
+        </div>
+        <div id="tabpanel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2" class="tab__content" hidden>
+          <p>Content2</p>
+        </div>
+        <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3" class="tab__content" hidden>
+          <p>Content3</p>
+        </div>
+      </div>
+
+      <h2>モーダル</h2>
+      <!-- Button trigger modal -->
+      <button type="button" class="modal-button js-modal-opener" data-modal-open="modal-1">open</button>
+
+      <h3>※ハンバーガーメニューの場合</h3>
+      <button
+        id="menu-button"
+        type="button"
+        class="modal-button modal-button--menu js-modal-opener"
+        data-modal-open="modal-2"
+        aria-label="メニューを開く"
+        ><span></span
+      ></button>
+
+      <h3>※dialog要素を使う場合</h3>
+      <button type="button" class="modal-button modal-button--dialog js-dialog-open" data-dialog-open="modal-3"
+        >open</button
+      >
+
+      <h2>アコーディオン</h2>
+
+      <div id="accordionGroup" class="accordion js-collapse">
+        <h3 class="accordion__header">
+          <button
+            id="collapse-switcher-1"
+            type="button"
+            aria-expanded="false"
+            class="accordion__switcher js-collapse-switcher"
+          >
+            <span class="accordion__title">
+              Collapse 1
+              <span class="accordion__icon arrow-icon"></span>
+            </span>
+          </button>
+        </h3>
+        <div role="region" class="accordion__content js-collapse-content" aria-labelledby="collapse-switcher-1" hidden>
+          <div>
+            <p
+              >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil vel blanditiis atque quos fugit sunt
+              dolores repudiandae ratione, dolorem magni doloribus aut delectus voluptatibus culpa non, eum quod,
+              aliquid rerum.</p
+            >
+          </div>
+        </div>
+        <h3 class="accordion__header">
+          <button
+            id="collapse-switcher-2"
+            type="button"
+            aria-expanded="false"
+            class="accordion__switcher js-collapse-switcher"
+          >
+            <span class="accordion__title">
+              Collapse 2
+              <span class="accordion__icon arrow-icon"></span>
+            </span>
+          </button>
+        </h3>
+        <div role="region" class="accordion__content js-collapse-content" aria-labelledby="collapse-switcher-2" hidden>
+          <div>
+            <p>Content 2</p>
+          </div>
+        </div>
+        <h3 class="accordion__header">
+          <button
+            id="collapse-switcher-3"
+            type="button"
+            aria-expanded="false"
+            class="accordion__switcher js-collapse-switcher"
+          >
+            <span class="accordion__title">
+              Collapse 3
+              <span class="accordion__icon arrow-icon"></span>
+            </span>
+          </button>
+        </h3>
+        <div role="region" class="accordion__content js-collapse-content" aria-labelledby="collapse-switcher-3" hidden>
+          <div>
+            <p>Content 3</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- details / summary -->
+      <h3>※details / summary要素を使用</h3>
+      <div class="accordion">
+        <details class="details js-details">
+          <summary class="details__summary js-summary">
+            <span class="details__summary-title">Details Collapse 1<span class="details__icon arrow-icon"></span></span>
+          </summary>
+          <div class="details-content js-details-content">
+            <p>Collapse 1</p>
+          </div>
+        </details>
+        <details class="details js-details">
+          <summary class="details__summary js-summary">
+            <span class="details__summary-title">Details Collapse 2<span class="details__icon arrow-icon"></span></span>
+          </summary>
+          <div class="details-content js-details-content">
+            <p
+              >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit aut, id nihil suscipit nulla tenetur
+              doloremque blanditiis, eveniet distinctio laborum repudiandae sed eos iste molestiae officia quos
+              laboriosam atque iure!</p
+            >
+          </div>
+        </details>
+      </div>
+
+      <h2>カルーセル（クロスフェード）</h2>
+      <section id="carouselSamples" class="carousel" aria-roledescription="carousel" aria-label="Sample Slides">
+        <div class="carousel-inner">
+          <div class="controls">
+            <button type="button" class="rotation" data-controls>再生を停止する</button>
+            <button
+              type="button"
+              class="previous"
+              aria-controls="carousel-sample-items"
+              aria-label="前のスライドへ"
+              data-controls
+              data-slide-controls
+            ></button>
+            <button
+              type="button"
+              class="next"
+              aria-controls="carousel-sample-items"
+              aria-label="次のスライドへ"
+              data-controls
+              data-slide-controls
+            ></button>
+          </div>
+
+          <div id="carousel-sample-items" class="carousel-items-container" aria-live="off">
+            <div class="carousel-item active" role="group" aria-roledescription="slide" aria-label="1 of 3">
+              <div class="carousel-content carousel-content--01">
+                <a href="#" data-link-focus>
+                  <div class="carousel-content__item">Slide 1</div>
+                </a>
+              </div>
+
+              <div class="carousel-caption">
+                <h3>
+                  <a href="#" id="carousel-label-1"> スライド1 </a>
+                </h3>
+              </div>
+            </div>
+
+            <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="2 of 3">
+              <div class="carousel-content carousel-content--02">
+                <a href="#" data-link-focus>
+                  <div class="carousel-content__item">Slide 2</div>
+                </a>
+              </div>
+
+              <div class="carousel-caption">
+                <h3>
+                  <a href="#" id="carousel-label-2"> スライド2 </a>
+                </h3>
+              </div>
+            </div>
+
+            <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="3 of 3">
+              <div class="carousel-content carousel-content--03">
+                <a href="#" data-link-focus>
+                  <div class="carousel-content__item">Slide 3</div>
+                </a>
+              </div>
+
+              <div class="carousel-caption">
+                <h3>
+                  <a href="#" id="carousel-label-3"> スライド3 </a>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal-1" class="modal" tabindex="-1" hidden>
+      <div class="modal__overlay js-overlay" tabindex="-1">
+        <div
+          class="modal-container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-1-title"
+          aria-describedby="modal-1-content"
+        >
+          <div class="modal-container__header">
+            <h3 id="modal-1-title" class="modal-container__title">Modal Title</h3>
+            <button
+              class="modal-container__close"
+              type="button"
+              aria-label="モーダルを閉じる"
+              data-modal-close
+            ></button>
+          </div>
+          <div id="modal-1-content" class="modal-container__content">
+            <p
+              >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum blanditiis necessitatibus error
+              reprehenderit nam placeat. Pariatur, error accusamus. Nobis consectetur cum tempore libero, neque saepe
+              est placeat. Possimus, culpa nulla.</p
+            >
+          </div>
+          <div class="modal-container__footer">
+            <button
+              class="modal-button modal-container__button"
+              type="button"
+              data-focus-primary
+              aria-label="続きを読む"
+              >Continue</button
+            >
+            <button
+              class="modal-button modal-container__button modal-container__button--close"
+              type="button"
+              aria-label="このダイアログウィンドウを閉じる"
+              data-modal-close
+              >Close</button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal(menu) -->
+    <div id="modal-2" class="modal modal--menu" tabindex="-1" hidden>
+      <div class="modal__overlay js-overlay" tabindex="-1">
+        <div
+          class="modal-container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="menu-button"
+          aria-describedby="menu-content"
+        >
+          <div class="modal-container__header">
+            <button
+              class="modal-container__close"
+              type="button"
+              aria-label="メニューを閉じる"
+              data-modal-close
+            ></button>
+          </div>
+          <div id="menu-content" class="modal-container__content">
+            <ul>
+              <li><a class="link" href="#top" data-focus-primary>Top</a></li>
+              <li><a class="link" href="#about">About</a></li>
+              <li><a class="link" href="#news">News</a></li>
+              <li><a class="link" href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal(dialog) -->
+    <dialog id="modal-3" class="dialog js-dialog">
+      <form class="modal-container modal-container--dialog" method="dialog">
+        <div class="modal-container__header">
+          <h3 class="modal-container__title">Modal Title</h3>
+          <button
+            class="modal-container__close"
+            type="button"
+            aria-label="モーダルを閉じる"
+            value="close"
+            data-dialog-close
+          ></button>
+        </div>
+        <div class="modal-container__content">
+          <p
+            >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum blanditiis necessitatibus error
+            reprehenderit nam placeat. Pariatur, error accusamus. Nobis consectetur cum tempore libero, neque saepe est
+            placeat. Possimus, culpa nulla.</p
+          >
+        </div>
+        <div class="modal-container__footer">
+          <button class="modal-button modal-container__button" type="button" autofocus aria-label="続きを読む"
+            >Continue</button
+          >
+          <button
+            class="modal-button modal-container__button modal-container__button--close"
+            type="button"
+            aria-label="このダイアログウィンドウを閉じる"
+            value="close"
+            data-dialog-close
+            >Close</button
+          >
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

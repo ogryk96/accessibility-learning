@@ -1,0 +1,31 @@
+{
+  "name": "accessibility-learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": "https://github.com/ogryk96/accessibility-learning.git",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": "21.2.0"
+  },
+  "scripts": {
+    "start": "tsc -w",
+    "build": "tsc",
+    "prettify": "prettier --write './**/*.{css,html,js,json,ts,vue}'"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --fix",
+    "*": "prettier -w -u"
+  },
+  "devDependencies": {
+    "eslint": "^8.53.0",
+    "lint-staged": "^15.1.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.2.2"
+  },
+  "volta": {
+    "node": "21.2.0",
+    "npm": "10.2.3"
+  }
+}

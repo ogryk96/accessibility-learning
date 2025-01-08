@@ -1,0 +1,237 @@
+.modal-button {
+  padding: 8px 16px;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2474d6;
+  cursor: pointer;
+  transition: transform 0.25s ease-out;
+}
+
+.modal-button:hover,
+.modal-button:focus {
+  transform: scale(1.05);
+}
+
+.modal-button--menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+}
+
+.modal-button--menu span,
+.modal-button--menu span::before,
+.modal-button--menu span::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  position: absolute;
+}
+.modal-button--menu span::before {
+  top: 8px;
+  content: '';
+}
+
+.modal-button--menu span::after {
+  bottom: 8px;
+  content: '';
+}
+
+.modal {
+  display: none;
+  overscroll-behavior: none;
+}
+
+.modal.is-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  overflow-y: auto;
+  /* スクロールバー非表示  Firefox */
+  scrollbar-width: none;
+}
+
+/* スクロールバー非表示  Chrome, Safari, Edge */
+.modal.is-open::-webkit-scrollbar {
+  display: none;
+}
+
+.modal__overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100% + 1px);
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-container {
+  width: fit-content;
+  max-width: 500px;
+  height: fit-content;
+  max-height: 300px;
+  padding: 30px;
+  background-color: #fff;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.modal.is-open .modal__overlay,
+.dialog[open],
+.dialog::backdrop {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.modal[hidden] .modal__overlay,
+.dialog.is-hidden,
+.dialog.is-hidden::backdrop {
+  animation: fadeOut 0.3s ease-out;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.modal-container__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-container__title {
+  margin: 0;
+}
+
+.modal-container__close {
+  padding: 0 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-container__close::before {
+  content: '\2715';
+  font-size: 20px;
+}
+
+.modal-container__button {
+  background-color: #00449e;
+}
+
+.modal-container__button--close {
+  color: #000;
+  background-color: #e6e6e6;
+}
+
+/* Modal (menu) */
+.modal--menu .modal__overlay {
+  height: 100%;
+  padding: 0;
+  background: #dfd3c3;
+}
+
+.modal--menu .modal-container {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  background: none;
+}
+
+.modal.modal--menu.is-open {
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.modal.modal--menu[hidden] {
+  animation: modalSlideOut 0.3s ease-out;
+}
+
+@keyframes modalSlideOut {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.modal--menu .modal-container__header {
+  justify-content: flex-end;
+}
+
+.modal--menu .modal-container__close {
+  background-color: #00449e;
+  border-radius: 4px;
+}
+
+.modal--menu .modal-container__close::before {
+  color: #fff;
+}
+
+.modal--menu .modal-container__content ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding: 40px 0;
+}
+
+.modal--menu .modal-container__content .link {
+  font-size: 32px;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Modal (dialog) */
+.modal-button--dialog {
+  background-color: #137752;
+}
+
+.dialog {
+  padding: 0;
+  overflow-y: auto;
+  border: none;
+}
+
+.dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ES2020",
+    "rootDir": "./src/script",
+    "outDir": "./public/script",
+    "strict": true,
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "baseUrl": "src"
+  },
+  "include": ["src/**/*.ts"]
+}
